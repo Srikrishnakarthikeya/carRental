@@ -1,0 +1,222 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Owner Login</title>
+
+</head>
+<body>
+  <div class="container">
+    <h2>Restaurant Owner Login</h2>
+    <% if (typeof error !== 'undefined') { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/login" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="./Images/Restaurants/download.png" type="image/icon type">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+
+<body onload="myload()">
+    <div class="loader-container" id="loader">
+        <img src="./Images/loader/loader.gif">
+
+    </div>
+
+    <!--Header section start-->
+
+    <p id="search-query-display"></p>
+<!-- Search Results Container -->
+<div class="box1">
+    <div class="container" style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 400px;">
+      <h2 style="margin-top: 0; text-align: center;">Car Booking Form</h2>
+      <form action="/submit-booking" method="POST" style="display: flex; flex-direction: column;">
+        
+        <!-- Car Details -->
+        <label for="make" style="font-weight: bold;">Car Make:</label><br>
+        <input type="text" id="make" name="make" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="model" style="font-weight: bold;">Car Model:</label><br>
+        <input type="text" id="model" name="model" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="year" style="font-weight: bold;">Car Year:</label><br>
+        <input type="number" id="year" name="year" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="licenceNumber" style="font-weight: bold;">Licence Plate Number:</label><br>
+        <input type="text" id="licenceNumber" name="licenceNumber" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="rentRate" style="font-weight: bold;">Rent Rate:</label><br>
+        <input type="number" id="rentRate" name="rentRate" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <!-- Booking Details -->
+        <label for="bookingTimeSlot" style="font-weight: bold;">Select Time Slot:</label><br>
+        <select id="bookingTimeSlot" name="bookingTimeSlot" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; height: 40px;">
+          <option value="">-- Select Time Slot --</option>
+          <option value="00:00">00:00</option>
+          <option value="01:00">01:00</option>
+          <option value="02:00">02:00</option>
+          <option value="03:00">03:00</option>
+          <option value="04:00">04:00</option>
+          <option value="05:00">05:00</option>
+          <option value="06:00">06:00</option>
+          <option value="07:00">07:00</option>
+          <option value="08:00">08:00</option>
+          <option value="09:00">09:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+          <option value="23:00">23:00</option>
+        </select><br>
+  
+        <label for="location" style="font-weight: bold;">Current Location:</label><br>
+        <input type="text" id="location" name="location" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <!-- Customer Details -->
+        <label for="customerName" style="font-weight: bold;">Customer Name:</label><br>
+        <input type="text" id="customerName" name="customerName" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="customerId" style="font-weight: bold;">Customer ID:</label><br>
+        <input type="text" id="customerId" name="customerId" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="customerContact" style="font-weight: bold;">Customer Contact (Phone):</label><br>
+        <input type="text" id="customerContactPhone" name="customerContactPhone" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="customerContact" style="font-weight: bold;">Customer Contact (Email):</label><br>
+        <input type="email" id="customerContactEmail" name="customerContactEmail" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <!-- Admin Details -->
+        <label for="adminName" style="font-weight: bold;">Admin Name:</label><br>
+        <input type="text" id="adminName" name="adminName" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="adminAddress" style="font-weight: bold;">Admin Address:</label><br>
+        <input type="text" id="adminAddress" name="adminAddress" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="adminContact" style="font-weight: bold;">Admin Contact (Phone):</label><br>
+        <input type="text" id="adminContactPhone" name="adminContactPhone" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <label for="adminContact" style="font-weight: bold;">Admin Contact (Email):</label><br>
+        <input type="email" id="adminContactEmail" name="adminContactEmail" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+  
+        <!-- Submit Button -->
+        <button type="submit" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; transition: background-color 0.3s ease;">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+
+
+
+    <!--Home  ends-->
+    <!-- <script src="search-results.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        }
+        window.onscroll = () => {
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        }
+       
+        var preloader = document.getElementById("loading");
+        function myload() {
+            preloader.style.display = "none";
+        }
+
+
+        const btn = document.querySelector("button");
+        const post = document.querySelector(".post");
+        const widget = document.querySelector(".star-widget");
+        const editBtn = document.querySelector(".edit");
+
+        btn.onclick = () => {
+            widget.style.display = "none";
+            post.style.display = "block";
+            editBtn.onclick = () => {
+                widget.style.display = "block";
+                post.style.display = "none";
+            }
+            return false;
+        }
+        function openAbout() {
+            document.getElementById("about").style.width = "100%";
+
+        }
+        function closeNav() {
+            document.getElementById("about").style.width = "0%";
+        }
+        var preloader = document.getElementById("loader");
+
+        function myloader() {
+            preloader.style.display = "none";
+        }
+        function mygrocery() {
+            confirm("Order Now on Whatsapp click ok to continue");
+        }
+    </script> -->
+
+            
+    <!--JavaScript ends -->
+
+</body>
+
+</html>

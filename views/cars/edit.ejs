@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Car</title>
+</head>
+<body>
+  <h1>Edit Car</h1>
+  <form action="/cars/update/<%= car._id %>" method="POST">
+    <label>Make:</label>
+    <input type="text" name="make" value="<%= car.make %>" required><br>
+    <label>Model:</label>
+    <input type="text" name="model" value="<%= car.model %>" required><br>
+    <label>Year:</label>
+    <input type="number" name="year" value="<%= car.year %>" required><br>
+    <label>Registration Number:</label>
+    <input type="text" name="registrationNumber" value="<%= car.registrationNumber %>" required><br>
+    <label>Rent Rate:</label>
+    <input type="number" name="rentRate" value="<%= car.rentRate %>" required><br>
+    <button type="submit">Update Car</button>
+  </form>
+  <a href="/cars">Back to Car List</a>
+</body>
+</html>

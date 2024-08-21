@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 1000px;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    input[type="text"] {
+      padding: 6px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: calc(100% - 20px);
+    }
+
+    button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #218838;
+    }
+
+    form {
+      display: inline-block;
+      margin: 0;
+    }
+
+    form + form {
+      margin-left: 10px;
+    }
+
+    @media (max-width: 768px) {
+      table, th, td {
+        display: block;
+        width: 100%;
+      }
+
+      th, td {
+        box-sizing: border-box;
+      }
+
+      tr {
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      form {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>All Bookings</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Car Make</th>
+        <th>Car Model</th>
+        <th>Car Year</th>
+        <th>Time Slot</th>
+        <th>Phone Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bookings.forEach(booking => { %>
+        <tr>
+          <td><%= booking.car.make %></td>
+          <td><%= booking.car.model %></td>
+          <td><%= booking.car.year %></td>
+          <td><%= booking.timeSlot %></td>
+          <td><%= booking.customer.phoneNumber %></td>
+          <td>
+            <!-- Update Form -->
+            <form action="/bookings/update/<%= booking._id %>" method="POST">
+              <input type="text" name="make" value="<%= booking.car.make %>" required>
+              <input type="text" name="model" value="<%= booking.car.model %>" required>
+              <input type="text" name="year" value="<%= booking.car.year %>" required>
+              <input type="text" name="timeSlot" value="<%= booking.timeSlot %>" required>
+              <input type="text" name="phoneNumber" value="<%= booking.customer.phoneNumber %>" required>
+              <input type="text" name="gmail" value="<%= booking.customer.gmail %>" required>
+              <button type="submit">Update</button>
+            </form>
+            
+            <!-- Delete Form -->
+            <form action="/bookings/delete/<%= booking._id %>" method="POST">
+              <button type="submit" style="background-color: #dc3545;">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
